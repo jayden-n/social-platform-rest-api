@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -57,5 +58,9 @@ public class UserDaoService {
 //        }
 //        // Return null if no user with the specified ID is found
 //        return null;
+    }
+
+    public void deleteById(int id) {
+        users.removeIf(user -> user.getId() == id);
     }
 }

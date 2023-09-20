@@ -33,6 +33,13 @@ public class UserResource {
             throw new UserNotFoundException("id:" + id);
        return user;
     }
+    // DELETE /users
+    @DeleteMapping("/users/{id}")
+    public void deleteUser(@PathVariable int id) {
+        service.deleteById(id);
+
+    }
+
 
     // POST /users
     @PostMapping("/users")
