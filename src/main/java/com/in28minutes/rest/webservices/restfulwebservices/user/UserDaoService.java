@@ -16,15 +16,26 @@ public class UserDaoService {
 
     private static final List<User> users = new ArrayList<>();
 
+
+    private static int usersCount = 0;
+
     static {
-        users.add(new User(1,"Jayden", LocalDate.now().minusYears(30)));
-        users.add(new User(2,"John", LocalDate.now().minusYears(25)));
-        users.add(new User(3,"Jim Carrey", LocalDate.now().minusYears(60)));
+        users.add(new User(++usersCount,"Jayden", LocalDate.now().minusYears(30)));
+        users.add(new User(++usersCount,"John", LocalDate.now().minusYears(25)));
+        users.add(new User(++usersCount,"Jim Carrey", LocalDate.now().minusYears(60)));
     }
+
+
 
     public List<User> findAll() {
         return users;
     }
+
+    public void save(User user) {
+        user.setId(++usersCount);
+        users.add(user);
+    }
+
     public User findById(int id) {
 
         return users.stream()
